@@ -112,6 +112,7 @@ class ApiService {
       ...options,
       headers,
     });
+    console.log(response);
 
     if (!response.ok) {
       // Spring Boot puede devolver texto plano en algunos errores
