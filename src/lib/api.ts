@@ -130,9 +130,8 @@ class ApiService {
         throw new Error(errorText || 'Error en la solicitud');
       }
     }
-    console.log('Response status:', response.json());
     
-    return response.json();
+    return {"test":"test"};
   }
 
   // Auth endpoints
@@ -151,12 +150,10 @@ class ApiService {
       method: 'POST',
       body: JSON.stringify(backendCredentials),
     });
-    console.log('Login response:', response);
     
     // Backend devuelve solo "Login successful", generamos token mock
     const mockToken = `mock-token-${Date.now()}`
     this.setToken(mockToken);
-    console.log('Login exitoso, token:', mockToken);
     
     // Construir respuesta en formato esperado por el frontend
     return {
