@@ -107,12 +107,7 @@ class ApiService {
     if (this.token) {
       headers['Authorization'] = `Bearer ${this.token}`;
     }
-    console.log('Request headers:', headers);
-    console.log('Request options:', options);
-    console.log('Request endpoint:', endpoint);
-    console.log('Request body:', options.body);
-    console.log('Request method:', options.method);
-    console.log('Request token:', API_BASE_URL);
+
 
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
