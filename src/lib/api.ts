@@ -146,7 +146,7 @@ class ApiService {
     });
     
     // Backend devuelve solo "Login successful", generamos token mock
-    const mockToken = btoa(JSON.stringify({ email: credentials.username, timestamp: Date.now() }));
+    const mockToken = `mock-token-${Date.now()}`
     this.setToken(mockToken);
     console.log('Login exitoso, token:', mockToken);
     
