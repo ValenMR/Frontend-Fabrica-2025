@@ -115,7 +115,6 @@ class ApiService {
 
     if (response.status !== 200) {
       // Spring Boot puede devolver texto plano en algunos errores
-      console.log('Error response:', response);
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const error = await response.json().catch(() => ({ message: 'Error en la solicitud' }));
@@ -125,7 +124,7 @@ class ApiService {
         throw new Error(errorText || 'Error en la solicitud');
       }
     }
-    console.log("Aqui");
+    
     return response.json();
   }
 
@@ -149,10 +148,11 @@ class ApiService {
     // Backend devuelve solo "Login successful", generamos token mock
     const mockToken = btoa(JSON.stringify({ email: credentials.username, timestamp: Date.now() }));
     this.setToken(mockToken);
+    console.log('Login exitoso, token:', mockToken);
     
     // Construir respuesta en formato esperado por el frontend
     return {
-      message: response,
+      message: "Login exitoso",
       token: mockToken,
       user: {
         id: credentials.username,
