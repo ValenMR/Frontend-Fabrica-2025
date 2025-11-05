@@ -112,10 +112,10 @@ class ApiService {
       ...options,
       headers,
     });
-    console.log(response);
 
-    if (!response.ok) {
+    if (response.status !== 200) {
       // Spring Boot puede devolver texto plano en algunos errores
+      console.log('Error response:', response);
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const error = await response.json().catch(() => ({ message: 'Error en la solicitud' }));
@@ -125,7 +125,7 @@ class ApiService {
         throw new Error(errorText || 'Error en la solicitud');
       }
     }
-
+    console.log("Aqui");
     return response.json();
   }
 
