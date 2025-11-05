@@ -130,6 +130,7 @@ class ApiService {
         throw new Error(errorText || 'Error en la solicitud');
       }
     }
+    console.log('Response status:', response.json());
     
     return response.json();
   }
